@@ -18,7 +18,7 @@ funcionMenu = do
         "2" -> condicional 1
         "3" ->funcionFactorial
         "4" ->menuCal
-        "5" -> funcionNumero [0,1,2,3,4,5,6,7,8,9,10]        
+        "5" -> funcionLista        
         "6" -> putStrLn("saliendo")
         _  -> print("Opcion invalida")
 
@@ -137,14 +137,18 @@ division h i = do
          h/i
 
 {-****************************************DESAPARECER NUMEROS***********************************************-}
-funcionNumero  nume = do
-                putStrLn("====NUMEROS DEL 0 AL 10====")
-                if null nume
+funcionLista = do
+            putStrLn("ingrese los numeros del 0 al 10")
+            lista <- getLine
+            funcionNume (lista)
+            funcionMenu
+
+funcionNume lista = do
+                if null lista
                     then do
-                    putStrLn("terminar")
-                    funcionMenu
+                    putStrLn("terminar")      
                 else do
-                    print(nume)
-                    let numeee = init nume
-                    funcionNumero(numeee)
+                    print(lista)
+                    let lista2 = init lista
+                    funcionNume(lista2)
 
